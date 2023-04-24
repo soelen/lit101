@@ -1,0 +1,261 @@
+// Single source of truth when it comes to styling.
+
+@use "sass:math";
+
+$prefix: 'lit101';
+$background: white;
+
+// 2, 4, 8, 16, 24, 32, 40, 80
+$spacers: (
+  20: 2px,
+  30: 4px,
+  40: 8px,
+  42: 10px,
+  45: 12px,
+  50: 16px,
+  55: 20px,
+  60: 24px,
+  70: 32px,
+  80: 40px,
+  90: 80px,
+);
+
+$z-indexes: (
+  dropdown: 1000,
+  sticky: 1020,
+  fixed: 1030,
+  nav-backdrop: 1040,
+  nav: 1045,
+  dialog-backdrop: 1050,
+  dialog: 1055,
+  popover: 1070,
+  tooltip: 1080,
+  snackbar: 1090,
+);
+
+$border-radius-pill: 50rem;
+
+$border-radii: (
+  sm: 3px,
+  md: 4px,
+  lg: 6px,
+);
+
+// Typography
+
+$font-family: "Roboto", "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif;
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+$root-font-size: 16px;
+
+$root-font-size: 16px;
+
+@function toFontRem( $font-size, $line-height ) {
+  // toRemAndUnitlessLineHeight
+  @return
+    math.div( round( calc( $font-size / $root-font-size * 1rem ) * 100 ), 100 )
+    '/'
+    math.div( round( calc( $line-height / $font-size * 1 ) * 100 ), 100);
+}
+
+@function toLetterSpacing( $letter-spacing ) {
+  @return math.div( round( calc( $letter-spacing / $root-font-size * 1rem ) * 1000 ), 1000 );
+}
+
+// Display
+
+$typography: (
+  11: (
+    font: toFontRem( 16px, 12px ),
+    letter-spacing: toLetterSpacing( 0.4px ),
+  ),
+  12: (
+    font: toFontRem( 16px, 12px ),
+    letter-spacing: toLetterSpacing( 0.4px ),
+  ),
+  14: (
+    font: toFontRem( 16px, 12px ),
+    letter-spacing: toLetterSpacing( 0.4px ),
+  ),
+  16: (
+    font: toFontRem( 16px, 12px ),
+    letter-spacing: toLetterSpacing( 0.4px ),
+  ),
+  18: (
+    font: toFontRem( 16px, 12px ),
+    letter-spacing: toLetterSpacing( 0.4px ),
+  ),
+  22: (
+    font: toFontRem( 16px, 12px ),
+    letter-spacing: toLetterSpacing( 0.4px ),
+  ),
+  24: (
+    font: toFontRem( 16px, 12px ),
+    letter-spacing: toLetterSpacing( 0.4px ),
+  ),
+  28: (
+    font: toFontRem( 16px, 12px ),
+    letter-spacing: toLetterSpacing( 0.4px ),
+  ),
+  32: (
+    font: toFontRem( 16px, 12px ),
+    letter-spacing: toLetterSpacing( 0.4px ),
+  ),
+  36: (
+    font: toFontRem( 16px, 12px ),
+    letter-spacing: toLetterSpacing( 0.4px ),
+  ),
+  45: (
+    font: toFontRem( 16px, 12px ),
+    letter-spacing: toLetterSpacing( 0.4px ),
+  ),
+  57: (
+    font: toFontRem( 16px, 12px ),
+    letter-spacing: toLetterSpacing( 0.4px ),
+  ),
+);
+
+// Elevations
+
+$elevations-light: (
+  10: (0px 4px 10px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.06)),
+  20: (0px 8px 12px rgba(0, 0, 0, 0.1), 0px 2px 5px rgba(0, 0, 0, 0.05)),
+  30: (0px 12px 24px rgba(0, 0, 0, 0.1), 0px 4px 8px rgba(0, 0, 0, 0.06)),
+  40: (0px 16px 32px rgba(0, 0, 0, 0.12), 0px 8px 12px rgba(0, 0, 0, 0.07)),
+  50: (0px 20px 40px rgba(0, 0, 0, 0.16), 0px 10px 15px rgba(0, 0, 0, 0.08)),
+);
+
+$elevations-dark: (
+  10: (0px 4px 8px rgba(0, 0, 0, 0.08), 0px 1px 2px rgba(0, 0, 0, 0.1)),
+  20: (0px 8px 16px rgba(0, 0, 0, 0.12), 0px 2px 5px rgba(0, 0, 0, 0.1)),
+  30: (0px 12px 24px rgba(0, 0, 0, 0.16), 0px 4px 8px rgba(0, 0, 0, 0.12)),
+  40: (0px 16px 32px rgba(0, 0, 0, 0.24), 0px 8px 12px rgba(0, 0, 0, 0.14)),
+  50: (0px 20px 40px rgba(0, 0, 0, 0.32), 0px 10px 15px rgba(0, 0, 0, 0.16)),
+);
+
+// Colors
+
+// Colors Black & White
+
+$black: #000000;
+$white: #ffffff;
+
+$black-transparent:(
+  5: rgba( $black, 0.05 ),
+  8: rgba( $black, 0.08 ),
+  12: rgba( $black, 0.12 ),
+  16: rgba( $black, 0.16 ),
+);
+
+$white-transparent:(
+  5: rgba( $white, 0.05 ),
+  8: rgba( $white, 0.08 ),
+  12: rgba( $white, 0.12 ),
+  16: rgba( $white, 0.16 ),
+);
+
+$primary: (
+  10: hsl(229, 54%, 25%),
+  20: hsl(229, 54%, 30%),
+  30: hsl(229, 54%, 35%),
+  40: hsl(229, 54%, 40%),
+  50: hsl(229, 54%, 45%),
+  60: hsl(229, 54%, 50%),
+  70: hsl(229, 54%, 55%),
+  80: hsl(229, 54%, 60%),
+  90: hsl(229, 54%, 65%),
+);
+
+$secondary: (
+  10: hsl(19, 97%, 45%),
+  20: hsl(19, 97%, 50%),
+  30: hsl(19, 97%, 55%),
+  40: hsl(19, 97%, 60%),
+  50: hsl(19, 97%, 65%),
+  60: hsl(19, 97%, 70%),
+  70: hsl(19, 97%, 75%),
+  80: hsl(19, 97%, 80%),
+  90: hsl(19, 97%, 85%),
+);
+
+$tertiary: (
+  10: hsl(46, 86%, 35%),
+  20: hsl(46, 86%, 40%),
+  30: hsl(46, 86%, 45%),
+  40: hsl(46, 86%, 50%),
+  50: hsl(46, 86%, 55%),
+  60: hsl(46, 86%, 60%),
+  70: hsl(46, 86%, 65%),
+  80: hsl(46, 86%, 70%),
+  90: hsl(46, 86%, 75%),
+
+);
+
+$success: (
+  10: hsl(90, 48%, 25%),
+  20: hsl(90, 48%, 30%),
+  30: hsl(90, 48%, 35%),
+  40: hsl(90, 48%, 40%),
+  50: hsl(90, 48%, 45%),
+  60: hsl(90, 48%, 50%),
+  70: hsl(90, 48%, 55%),
+  80: hsl(90, 48%, 60%),
+  90: hsl(90, 48%, 65%),
+);
+
+$error: (
+  10: hsl(357, 65%, 25%),
+  20: hsl(357, 65%, 30%),
+  30: hsl(357, 65%, 35%),
+  40: hsl(357, 65%, 40%),
+  50: hsl(357, 65%, 45%),
+  60: hsl(357, 65%, 50%),
+  70: hsl(357, 65%, 55%),
+  80: hsl(357, 65%, 60%),
+  90: hsl(357, 65%, 65%),
+);
+
+$neutral: (
+  10: hsl(185, 5%, 25%),
+  20: hsl(185, 5%, 30%),
+  30: hsl(185, 5%, 35%),
+  40: hsl(185, 5%, 40%),
+  50: hsl(185, 5%, 45%),
+  60: hsl(185, 5%, 50%),
+  70: hsl(185, 5%, 55%),
+  80: hsl(185, 5%, 60%),
+  90: hsl(185, 5%, 65%),
+);
+
+$proposal-mix-of-el-and-surface: (
+    level-1: mix( map-get( $primary, 40 ), $background ),
+    // level-1: mix( elevation level + surface color ),
+);
+
+// Colors Text & Icons
+
+$text-light-primary: map-get($map: $neutral, $key: 10 );
+$text-light-secondary: map-get($map: $neutral, $key: 50 );
+$text-light-disabled: map-get($map: $neutral, $key: 70 );
+
+$text-dark-primary: map-get($map: $neutral, $key: 98 );
+$text-dark-secondary: map-get($map: $neutral, $key: 60 );
+$text-dark-disabled: map-get($map: $neutral, $key: 30 );
+
+$breakpoint-xs-start: 0;
+$breakpoint-xs-end: 599px;
+$breakpoint-sm-start: 600px;
+$breakpoint-sm-end: 904px;
+$breakpoint-md-start: 905px;
+$breakpoint-md-end: 1239px;
+$breakpoint-lg-start: 1240px;
+$breakpoint-lg-end: 1439px;
+$breakpoint-xl-start:1440px;
+
+$breakpoints: (
+  xs: $breakpoint-xs-start,
+  sm: $breakpoint-sm-start,
+  md: $breakpoint-md-start,
+  lg: $breakpoint-lg-start,
+  xl: $breakpoint-xl-start,
+);

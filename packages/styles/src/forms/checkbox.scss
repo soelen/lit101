@@ -1,0 +1,7 @@
+@use "../_variables";
+@use "./_form-control";
+
+.#{variables.$prefix}-checkbox {
+  @extend %form-control-reset;
+  background: pink;
+}

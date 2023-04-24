@@ -1,0 +1,28 @@
+{
+  "name": "lit-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "main": "dist/main.es.js",
+  "exports": {
+    ".": "./dist/main.es.js"
+  },
+  "types": "types/main.d.ts",
+  "files": [
+    "dist",
+    "types"
+  ],
+  "scripts": {
+    "start": "vite",
+    "build": "tsc && vite build"
+  },
+  "dependencies": {
+    "@lit101/components": "file:../../packages/components",
+    "@lit101/styles": "file:../../packages/styles",
+    "lit": "^2.6.1"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.3",
+    "vite": "^4.2.1"
+  }
+}

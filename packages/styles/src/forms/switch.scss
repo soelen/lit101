@@ -1,0 +1,81 @@
+@use "../_variables";
+@use "./_form-control";
+
+.#{variables.$prefix}-switch {
+  @extend %form-control-reset;
+
+  /* The switch - the box around the slider */
+  position: relative;
+  display: inline-block;
+  min-width: 40px;
+
+  /* Hide default HTML checkbox */
+  input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  /* The slider */
+  &__slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    border-radius: var( --lit101-border-radius-pill );
+    background-color: var( --lit101-primary-40 );
+    transition: 400ms;
+
+    &:before,
+    &:after {
+      position: absolute;
+      content: "";
+      top: 50%;
+      border-radius: 50rem;
+      transform: translate( 0, -50% );
+      transition: 400ms;
+    }
+
+    &:before {
+      height: 45px;
+      width: 45px;
+      left: -5px;
+      border-radius: 50rem;
+      background-color: rgba(103, 80, 164, 0.12);
+      background-color: rgba(28, 27, 31, 0.12);
+      background-color: rgba( map-get( variables.$primary, 40 ), .5);
+      opacity: 0;
+    }
+    &:after {
+      height: 25px;
+      width: 25px;
+      left: 5px;
+      border-radius: 50rem;
+      background-color: white;
+    }
+  }
+  input:hover + &__slider:before,
+  input:focus + &__slider:before {
+    opacity: 1;
+  }
+
+
+  input:checked + &__slider {
+  }
+
+  input:focus + &__slider:after {
+    // box-shadow: 0 0 1px #2196F3;
+  }
+
+  input:checked + &__slider:after {
+    background-color: var( --lit101-primary-90 );
+    left: calc(100% - 5px);
+    transform: translate(-100%, -50%);
+  }
+  input:checked + &__slider:before {
+    // background-color: var( --lit101-primary-90 );
+    left: calc(100% + 5px);
+    transform: translate(-100%, -50%);
+  }
+
+}
+

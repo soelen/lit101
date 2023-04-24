@@ -1,0 +1,74 @@
+// Export to CSS
+
+@use "sass:meta";
+
+@use "../_variables";
+
+:root {
+
+  /* Spacer */
+  @each $key, $value in variables.$spacers {
+    --#{variables.$prefix}-spacer-#{$key}: #{$value};
+  }
+
+  /* Border Radius */
+
+  @each $key, $value in variables.$border-radii {
+    --#{variables.$prefix}-border-radius-#{$key}: #{$value};
+  }
+
+  /* Elevation Light */
+
+  @each $key, $value in variables.$elevations-light {
+    --#{variables.$prefix}-elevation-light-#{$key}: #{$value};
+  }
+
+  /* Elevation Dark */
+
+  @each $key, $value in variables.$elevations-dark {
+    --#{variables.$prefix}-elevation-dark-#{$key}: #{$value};
+  }
+
+  /* Breakpoints */
+
+  @each $key, $value in variables.$breakpoints {
+    --#{variables.$prefix}-breakpoint-#{$key}: #{$value};
+  }
+
+  /* Z-Indexes */
+
+  @each $key, $value in variables.$z-indexes {
+    --#{variables.$prefix}-z-index-#{$key}: #{$value};
+  }
+
+  /* Others */
+
+  @each $name, $variable in meta.module-variables("variables") {
+    // @debug $name;
+    // @debug type-of($value: $variable);
+    // @debug $variable;
+
+    @if type-of($variable) == 'string' {
+      --#{variables.$prefix}-#{$name}: #{$variable};
+    } @else if type-of($variable) == 'number' {
+      --#{variables.$prefix}-#{$name}: #{$variable};
+    } @else if type-of($variable) == 'color' {
+      --#{variables.$prefix}-#{$name}: #{$variable};
+    } @else if type-of($variable) == 'list' {
+      --#{variables.$prefix}-#{$name}: #{$variable};
+    } @else if type-of($variable) == 'map' {
+      @each $key, $value in $variable {
+        @if type-of($value) == 'color' {
+          --#{variables.$prefix}-#{$name}-#{$key}: #{$value};
+        }
+      }
+    }
+  }
+  @each $key, $value in variables.$typography {
+
+    --#{variables.$prefix}-typography-font-#{$key}: #{map-get($map: $value, $key: font )};
+    --#{variables.$prefix}-typography-letter-spacing-#{$key}: #{map-get($map: $value, $key: letter-spacing )};
+
+    // @debug $key;
+  }
+}

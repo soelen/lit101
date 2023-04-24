@@ -1,0 +1,41 @@
+{
+  "name": "@lit101/styles",
+  "private": true,
+  "version": "0.0.0",
+  "main": "./dist/main.cjs.js",
+  "module": "./dist/main.es.js",
+  "type": "module",
+  "exports": {
+    ".": "./dist/main.es.js",
+    "./variables.css": {
+      "import": "./dist/variables.css",
+      "require": "./dist/variables.css"
+    },
+    "./_variables.scss": {
+      "import": "./src/_variables.scss",
+      "require": "./src/_variables.scss"
+    }
+  },
+  "types": "types/main.d.ts",
+  "files": [
+    "dist",
+    "types"
+  ],
+  "scripts": {
+    "dev": "vite --port 4005",
+    "frameworks": "concurrently --names \"TRADITIONAL,REACT,VUE,SVELTE,LIT\" -c \"yellow.bgMagenta.bold,yellow.bgBlue.bold,yellow.bgGreen.bold,yellow.bgRed.bold,yellow.bgCyan.bold\" \"npm run traditional\" \"npm run react\" \"npm run vue\" \"npm run svelte\" \"npm run lit\"",
+    "vanilla": "cd frameworks/vanilla && npm run dev",
+    "react": "cd frameworks/react && npm run dev",
+    "vue": "cd frameworks/vue && npm run dev",
+    "build": "npm run build:module && npm run build:css",
+    "build:module": "tsc && vite build",
+    "build:css": "sass src/css/variables.scss dist/variables.css",
+    "build:helperclasses": "sass --watch src/css/helperclasses:dist/helperclasses",
+    "build:forms": "sass --watch src/forms:dist"
+  },
+  "devDependencies": {
+    "sass": "^1.58.3",
+    "typescript": "^4.5.4",
+    "vite": "^4.2.1"
+  }
+}

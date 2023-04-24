@@ -1,0 +1,36 @@
+@use "../_variables";
+@use "./_form-control";
+
+.#{variables.$prefix}-floating-input {
+  // background: var( --lit101-neutral-variant-90 );
+  position: relative;
+  input {
+    @extend %form-control-reset;
+    &:focus {
+      padding-top: 1.625rem;
+      padding-bottom: 0.625rem;
+    }
+
+    background: pink;
+    &:focus~label {
+      opacity: .65;
+      transform: scale(.85) translateY(-0.5rem) translateX(0.15rem);
+    }
+  }
+  label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 1rem 0.75rem;
+    overflow: hidden;
+    text-align: start;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    pointer-events: none;
+    border: 1px solid transparent;
+    transform-origin: 0 0;
+    transition: opacity .1s ease-in-out,transform .1s ease-in-out;
+  }
+}

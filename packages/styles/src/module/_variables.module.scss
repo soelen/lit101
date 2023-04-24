@@ -1,0 +1,51 @@
+// Export as Javascript Module
+@use "sass:meta";
+@use "../_variables";
+
+:export {
+    /* Spacer */
+  @each $key, $value in variables.$spacers {
+    spacer-#{$key}: #{$value};
+  }
+
+  /* Border Radius */
+
+  @each $key, $value in variables.$border-radii {
+    border-radius-#{$key}: #{$value};
+  }
+
+  /* Elevation Light */
+
+  @each $key, $value in variables.$elevations-light {
+    elevation-light-#{$key}: #{$value};
+  }
+
+  /* Elevation Dark */
+
+  @each $key, $value in variables.$elevations-dark {
+    elevation-dark-#{$key}: #{$value};
+  }
+
+  /* Breakpoints */
+
+  @each $key, $value in variables.$breakpoints {
+    breakpoint-#{$key}: #{$value};
+  }
+
+  @each $name, $variable in meta.module-variables("variables") {
+
+    @if type-of($variable) == 'string' {
+      #{$name}: #{$variable};
+    } @else if type-of($variable) == 'number' {
+      #{$name}: #{$variable};
+    } @else if type-of($variable) == 'list' {
+      #{$name}: #{$variable};
+    } @else if type-of($variable) == 'map' {
+      @each $key, $value in $variable {
+        @if type-of($value) == 'color' {
+          #{$name}-#{$key}: #{$value};
+        }
+      }
+    }
+  }
+};
